@@ -9,3 +9,11 @@ variable "tfe_organisation_name" {
 variable "workspacename" {
   default = null
 }
+
+variable "environment" {
+  default = null
+}
+
+variable "instance_number" {
+  default = null
+}
