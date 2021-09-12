@@ -22,3 +22,10 @@ resource "google_project_iam_member" "rahulbq" {
   member = "user:rahulg1333@gmail.com"
   depends_on = [google_project_iam_member.rahulproj]
 }
+
+resource "google_project_iam_member" "tejas" {
+  count = var.environment == "qa" ? 1 : 0
+  project = "vc-fallen-${var.environment}"
+  role   = "roles/viewer"
+  member = "user:tejaso327@gmail.com"
+}
