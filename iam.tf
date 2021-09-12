@@ -26,7 +26,7 @@ resource "google_project_iam_member" "rahulbq" {
 resource "google_project_iam_member" "tejasdevint" {
   count = var.environment == "devint" ? 1 : 0
   project = "vc-fallen-${var.environment}"
-  role   = "roles/owner"
+  role   = "roles/editor"
   member = "user:tejaso327@gmail.com"
 }
 
