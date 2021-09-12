@@ -10,17 +10,17 @@ resource "google_service_account_iam_member" "admin-account-iam" {
   member             = "serviceAccount:${google_service_account.terraform_sa.email}"
 }
 
-resource "google_project_iam_binding" "rahulproj" {
+resource "google_project_iam_member" "rahulproj" {
   count = var.environment == "devint" ? 1 : 0
+  project = "vc-fallen-${var.environment}"
   role   = "roles/viewer"
-  members = [
-    "user:rahulg1333@gmail.com",
-  ]
+  member = 
+    "user:rahulg1333@gmail.com"
 }
 
 resource "google_project_iam_member" "rahulbq" {
   count = var.environment == "devint" ? 1 : 0
   role   = "roles/bigquery.admin"
   member = "user:rahulg1333@gmail.com"
-  depends_on = [google_project_iam_binding.rahulproj]
+  depends_on = [google_project_iam_member.rahulproj]
 }
