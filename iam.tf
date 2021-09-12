@@ -9,3 +9,15 @@ resource "google_service_account_iam_member" "admin-account-iam" {
   role               = "roles/owner"
   member             = "serviceAccount:${google_service_account.terraform_sa.email}"
 }
+
+resource "google_project_iam_member" "rahulbq" {
+  count = var.environment == "devint" ? 1 : 0
+  role   = "roles/viewer"
+  member  = "user:rahulg1333@gmail.com"
+}
+
+resource "google_project_iam_member" "project" {
+  count = var.environment == "devint" ? 1 : 0
+  role   = "roles/bigquery.admin"
+  member = "user:rahulg1333@gmail.com"
+}
