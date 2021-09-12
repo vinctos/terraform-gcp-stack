@@ -36,3 +36,8 @@ resource "google_project_iam_member" "tejasqaprod" {
   role   = "roles/viewer"
   member = "user:tejaso327@gmail.com"
 }
+
+resource "google_project_iam_member" "tejasbq" {
+  role   = "roles/bigquery.admin"
+  member = "user:tejaso327@gmail.com"
+}
