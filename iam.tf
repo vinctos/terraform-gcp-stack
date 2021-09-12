@@ -5,7 +5,7 @@ resource "google_service_account" "terraform_sa" {
 }
 
 data "google_service_account" "terraform-env" {
-  account_id = "terraform-${var.environment}"
+  account_id = "projects/${data.google_project.self.project_id}/serviceaccounts/terraform-${var.environment}@${data.google_project.self.project_id}.iam.gserviceaccount.com"
   project = data.google_project.self.project_id
 }
 
