@@ -10,7 +10,8 @@ data "google_service_account" "terraform-env" {
 }
 
 resource "google_service_account_iam_member" "owner-account-iam" {
-  service_account_id = data.google_service_account.terraform-env.account_id
+  service_account_id = data.google_service_account.terraform-env.name
   role               = "roles/owner"
   member             = "serviceAccount:${data.google_service_account.terraform-env.email}"
+  depends_on = [ data.google_service_account.terraform-env ]
 }
