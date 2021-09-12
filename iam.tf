@@ -16,8 +16,6 @@ resource "google_project_iam_member" "rahulproj" {
   role   = "roles/viewer"
   member = "user:rahulg1333@gmail.com"
 }
-
-
 resource "google_project_iam_member" "rahulbq" {
   count = var.environment == "devint" ? 1 : 0
   role   = "roles/bigquery.admin"
