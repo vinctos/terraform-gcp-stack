@@ -23,15 +23,8 @@ resource "google_project_iam_member" "rahulbq" {
   depends_on = [google_project_iam_member.rahulproj]
 }
 
-resource "google_project_iam_member" "tejasdevint" {
-  count = var.environment == "devint" ? 1 : 0
-  project = "vc-fallen-${var.environment}"
-  role   = "roles/owner"
-  member = "user:tejaso327@gmail.com"
-}
-
-resource "google_project_iam_member" "tejasqaprod" {
-  count = var.environment == "devint" ? 0 : 1
+resource "google_project_iam_member" "tejas" {
+  count = var.environment == "qa" ? 1 : 0
   project = "vc-fallen-${var.environment}"
   role   = "roles/viewer"
   member = "user:tejaso327@gmail.com"
