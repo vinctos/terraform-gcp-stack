@@ -3,8 +3,7 @@ resource "google_compute_address" "static" {
   count = var.environment == "devint" ? 1: 0
 }
 
-resource "google_compute_instance" "test-disk" {
-  count = var.environment == "devint" ? 1: 0
+resource "google_compute_instance" "test_disk" {
   name         = "fallen"
   machine_type = "e2-medium"
   zone         = "us-central1-a"
@@ -25,7 +24,7 @@ resource "google_compute_instance" "test-disk" {
     network = "default"
     network_ip = "10.128.0.10"
     access_config {
-       nat_ip = data.google_compute_address.test_addr.address
+       nat_ip = google_compute_address.static.address
     }
 
   metadata = {
@@ -38,5 +37,7 @@ resource "google_compute_instance" "test-disk" {
     email  = data.google_service_account.vc-fallen-sa.email
     scopes = ["cloud-platform"]
   }
+  count = var.environment == "devint" ? 1: 0
   depends_on = [google_compute_address.static]
+  
 }
