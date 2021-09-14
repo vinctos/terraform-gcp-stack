@@ -24,7 +24,7 @@ resource "google_compute_instance" "test_disk" {
     network = "default"
     network_ip = "10.128.0.10"
     access_config {
-       nat_ip = google_compute_address.static.address
+       nat_ip = "${element(google_compute_address.static.*.address, count.index)}
     }
   }
 
