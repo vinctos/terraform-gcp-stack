@@ -14,7 +14,7 @@ resource "google_container_node_pool" "devint_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    preemptible  = true
+    preemptible  = false
     machine_type = "n1-standard-1"
 
       service_account = data.google_service_account.vc-fallen-sa.email
