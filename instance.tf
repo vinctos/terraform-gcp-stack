@@ -18,10 +18,6 @@ resource "google_compute_instance" "test_disk" {
     }
   }
   
-  scratch_disk {
-    interface = "NVME"
-  }
-
   network_interface {
     network = "default"
     network_ip = "10.128.0.10"
