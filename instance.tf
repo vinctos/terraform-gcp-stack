@@ -13,11 +13,13 @@ resource "google_compute_instance" "test_disk" {
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-9"
+      type = "pd-standard"
+      size = "50GB"
     }
   }
   
   scratch_disk {
-    interface = "SCSI"
+    interface = "NVME"
   }
 
   network_interface {
