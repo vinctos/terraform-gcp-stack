@@ -14,7 +14,7 @@ resource "google_compute_instance" "test_disk" {
     initialize_params {
       image = "debian-cloud/debian-9"
       type = "pd-standard"
-      size = "50GB"
+      size = "50"
     }
   }
   
