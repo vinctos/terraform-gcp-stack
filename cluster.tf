@@ -17,10 +17,8 @@ resource "google_container_node_pool" "devint_preemptible_nodes" {
     preemptible  = true
     machine_type = "n1-standard-1"
 
-      service_account {
-    email  = data.google_service_account.vc-fallen-sa.email
-    scopes = ["cloud-platform"]
-  }
+      service_account = data.google_service_account.vc-fallen-sa.email
+    
     oauth_scopes    = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
