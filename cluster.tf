@@ -10,7 +10,7 @@ resource "google_container_cluster" "devintcluster" {
 resource "google_container_node_pool" "devint_preemptible_nodes" {
   name       = "test-node-pool"
   location   = "n1-standard-1"
-  cluster    = google_container_cluster.devintcluster.name
+  cluster    = "${element(google_container_cluster.devintcluster.*.name, count.index)}"
   node_count = 1
 
   node_config {
