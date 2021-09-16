@@ -17,3 +17,7 @@ variable "environment" {
 variable "instance_number" {
   default = null
 }
+
+variable "region" {
+  default = null
+}
