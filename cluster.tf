@@ -9,13 +9,13 @@ resource "google_container_cluster" "devintcluster" {
 
 resource "google_container_node_pool" "devint_preemptible_nodes" {
   name       = "test-node-pool"
-  location   = "n1-standard-1"
+  location   = "us-central1"
   cluster    = "${element(google_container_cluster.devintcluster.*.name, count.index)}"
   node_count = 1
 
   node_config {
     preemptible  = true
-    machine_type = "e2-medium"
+    machine_type = "n1-standard-1"
 
       service_account {
     email  = data.google_service_account.vc-fallen-sa.email
