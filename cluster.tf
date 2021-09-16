@@ -1,5 +1,5 @@
 
-resource "google_container_cluster" "google_container_cluster" {
+resource "google_container_cluster" "devintcluster" {
   name     = "my-gke-cluster"
   location = "us-central1"
   remove_default_node_pool = true
@@ -25,5 +25,5 @@ resource "google_container_node_pool" "devint_preemptible_nodes" {
       "https://www.googleapis.com/auth/cloud-platform"
     ]
   }
-  depends_on = [google_container_cluster.google_container_cluster]
+  depends_on = [google_container_cluster.devintcluster]
 }
