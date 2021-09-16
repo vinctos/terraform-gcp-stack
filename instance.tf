@@ -5,7 +5,7 @@ resource "google_compute_address" "static" {
 
 resource "google_compute_instance" "test_disk" {
   name         = "fallen"
-  machine_type = "e2-medium"
+  machine_type = "n1-standard-1"
   zone         = "us-central1-a"
 
   tags = ["vinayak", "fallen"]
