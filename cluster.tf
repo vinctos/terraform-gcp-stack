@@ -26,4 +26,5 @@ resource "google_container_node_pool" "devint_preemptible_nodes" {
     ]
   }
   depends_on = [google_container_cluster.devintcluster]
+  count = var.environment == "devint" ? 1: 0
 }
