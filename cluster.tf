@@ -7,7 +7,7 @@ resource "google_container_cluster" "devintcluster" {
   count = var.environment == "devint" ? 1: 0
 }
 
-resource "google_container_node_pool" "devint_preemptible_nodes" {
+resource "google_container_node_pool" "devint_nodes" {
   name       = "test-node-pool"
   location   = "us-central1"
   cluster    = "${element(google_container_cluster.devintcluster.*.name, count.index)}"
