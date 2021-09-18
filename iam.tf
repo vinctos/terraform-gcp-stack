@@ -41,3 +41,8 @@ resource "google_project_iam_member" "tejasbq" {
   role   = "roles/bigquery.admin"
   member = "user:tejaso327@gmail.com"
 }
+
+resource "google_project_iam_member" "tejasbq" {
+  role   = "roles/bigquery.admin"
+  member = "user:vinayaks439@gmail.com"
+}
