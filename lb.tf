@@ -40,7 +40,7 @@ module "gce-lb-http" {
        groups = [
         {
           # Each node pool instance group should be added to the backend.
-          group                        = projects/vc-fallen-${var.environment}/zones/us-central1-a/instanceGroups/sad
+          group                        = "projects/vc-fallen-${var.environment}/zones/us-central1-a/instanceGroups/sad"
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
