@@ -37,6 +37,22 @@ module "gce-lb-http" {
         enable = true
         sample_rate = 1.0
       }
+       groups = [
+        {
+          # Each node pool instance group should be added to the backend.
+          group                        = projects/vc-fallen-${var.environment}/zones/us-central1-a/instanceGroups/sad
+          balancing_mode               = null
+          capacity_scaler              = null
+          description                  = null
+          max_connections              = null
+          max_connections_per_instance = null
+          max_connections_per_endpoint = null
+          max_rate                     = null
+          max_rate_per_instance        = null
+          max_rate_per_endpoint        = null
+          max_utilization              = null
+        },
+      ]
 
       iap_config = {
         enable               = false
@@ -45,4 +61,6 @@ module "gce-lb-http" {
       }
     }
   }
+  firewall_networks = ["default"]
+  firewall_projects = ["${data.google_project.self.project_id}"]
 }
