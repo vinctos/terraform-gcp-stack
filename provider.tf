@@ -3,6 +3,10 @@ provider "google" {
   region = var.region
   
 }
+provider "google-beta" {
+  project     = var.project_id
+  region      = var.region
+}
 
 terraform {
   required_version = ">= 0.13"
@@ -11,6 +15,10 @@ terraform {
     helm = {
       source  = "hashicorp/helm"
       version = "~> 0.10.4"
+    }
+    google-beta = {
+      source = "hashicorp/terraform-provider-google-beta"
+      version = "~> 3.77.0"
     }
     google = {
       source  = "hashicorp/google"
