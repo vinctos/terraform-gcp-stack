@@ -1,7 +1,8 @@
 resource "google_compute_managed_ssl_certificate" "default" {
+  count = var.environment == "devint" ? 1: 0
   name = "test-cert"
   project = data.google_project.self.project_id
-  type = "MANAGED"
+  
   managed {
     domains = []
   }
