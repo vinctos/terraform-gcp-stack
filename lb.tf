@@ -1,3 +1,14 @@
+resource "google_compute_managed_ssl_certificate" "default" {
+  name = "test-cert"
+  project = data.google_project.self.project_id
+  type = "MANAGED"
+  managed {
+    domains = []
+  }
+  
+}
+
+
 module "gce-lb-http" {
   count = var.environment == "devint" ? 1: 0
   source            = "GoogleCloudPlatform/lb-http/google"
@@ -63,4 +74,8 @@ module "gce-lb-http" {
   }
   firewall_networks = ["default"]
   firewall_projects = ["${data.google_project.self.project_id}"]
+  ssl = true
+  use_ssl_certificates = true
+  ssl_certificates = [google_compute_managed_ssl_certificate.default.id]
+  
 }
