@@ -74,8 +74,6 @@ module "gce-lb-http" {
   }
   firewall_networks = ["default"]
   firewall_projects = ["${data.google_project.self.project_id}"]
-  ssl = true
-  use_ssl_certificates = false
   ssl_certificates = [google_compute_managed_ssl_certificate.default.id]
   
 }
