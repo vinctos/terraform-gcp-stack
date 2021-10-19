@@ -1,6 +1,6 @@
 resource "google_compute_address" "test" {
   count = 2
-  name = "counttestaddr"
+  name = element(var.addr_name, count.index)
 }
 
 resource "google_compute_instance" "instance_with_ip" {
