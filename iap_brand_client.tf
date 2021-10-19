@@ -8,7 +8,7 @@
 #   application_title = "Cloud IAP protected Application"
 # }
 
-resource "google_iap_client" "project_client" {
-  display_name = "IAPtestAPP"
-  brand        =  "projects/475917491527/brands/475917491527"
-}
+# resource "google_iap_client" "project_client" {
+#   display_name = "IAPtestAPP"
+#   brand        =  "projects/475917491527/brands/475917491527"
+# }
